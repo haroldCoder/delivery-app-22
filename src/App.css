@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    padding: .5em;
+}
+
+.panel{
+    background: #000000CB;
+    backdrop-filter: blur(6px);
+}
