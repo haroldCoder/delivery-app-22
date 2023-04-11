@@ -1,1 +1,1 @@
-export const API = "https://delivery-app-22-production.up.railway.app/";
+export const API = "http://localhost:4000/";
