@@ -46,7 +46,7 @@ export default function Home() : JSX.Element {
                 setMinutes(minutes + 1);
                 setSeconds(0);
                 data.forEach(e=>{
-                    axios.patch(API+e.id,{
+                    axios.put(API+e.id,{
                         name: e.name,
                         cel: e.cel,
                         xp: e.xp,
@@ -66,7 +66,7 @@ export default function Home() : JSX.Element {
         // setState(res[0].state)
     }
     function State(){
-        axios.patch(API+iddelivery,{
+        axios.put(API+iddelivery,{
             name: name,
             cel: cel,
             xp: xp,
