@@ -46,7 +46,7 @@ export default function Home() : JSX.Element {
                 setMinutes(minutes + 1);
                 setSeconds(0);
                 data.forEach(e=>{
-                    axios.patch('http://localhost:8000/'+e.iddelivery,{
+                    axios.patch('https://delivery-app-22-production.up.railway.app/'+e.iddelivery,{
                         name: e.name,
                         cel: e.cel,
                         xp: e.xp,
@@ -61,12 +61,12 @@ export default function Home() : JSX.Element {
         }, 1000)
     }
     async function getData(){
-        const res = (await axios.get<Data[]>("http://localhost:8000")).data;
+        const res = (await axios.get<Data[]>("https://delivery-app-22-production.up.railway.app/")).data;
         setData(res); 
         setState(res[0].state)
     }
     function State(){
-        axios.patch('http://localhost:8000/'+iddelivery,{
+        axios.patch('https://delivery-app-22-production.up.railway.app/'+iddelivery,{
             name: name,
             cel: cel,
             xp: xp,
