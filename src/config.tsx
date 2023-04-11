@@ -1,0 +1,1 @@
+export const API = "https://delivery-app-22-production.up.railway.app/";

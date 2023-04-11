@@ -47,7 +47,7 @@ app.post("/", (req, res)=>{
 app.patch("/:id", async(req, res) =>{
     const {name, cel, xp, state} = req.body;
     const {id} = req.params;
-    connect.query(`UPDATE delivery SET name = "${name}", cel = ${cel}, xp = "${xp}", state = ${state}  WHERE iddelivery = ${id}`,(err, result)=>{
+    connect.query(`UPDATE delivery SET name = "${name}", cel = ${cel}, xp = "${xp}", state = ${state}  WHERE id = ${id}`,(err, result)=>{
         if(err) throw err;
         res.json(result)
     })

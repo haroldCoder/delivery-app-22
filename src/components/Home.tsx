@@ -1,8 +1,8 @@
-import React, {ReactNode, useEffect, useState, Component} from 'react'
+import React, {useEffect, useState} from 'react'
 import ride from '../imgs/delivery.png'
 import axios from 'axios';
 import {FiHelpCircle} from 'react-icons/fi';
-
+import {API} from '../config';
 interface Data{
     id: Number,
     name: string,
@@ -46,7 +46,7 @@ export default function Home() : JSX.Element {
                 setMinutes(minutes + 1);
                 setSeconds(0);
                 data.forEach(e=>{
-                    axios.patch('https://delivery-app-22-production.up.railway.app/'+e.iddelivery,{
+                    axios.patch(API+e.id,{
                         name: e.name,
                         cel: e.cel,
                         xp: e.xp,
@@ -61,12 +61,12 @@ export default function Home() : JSX.Element {
         }, 1000)
     }
     async function getData(){
-        const res = (await axios.get<Data[]>("https://delivery-app-22-production.up.railway.app/")).data;
+        const res = (await axios.get<Data[]>(API)).data;
         setData(res); 
-        setState(res[0].state)
+        // setState(res[0].state)
     }
     function State(){
-        axios.patch('https://delivery-app-22-production.up.railway.app/'+iddelivery,{
+        axios.patch(API+iddelivery,{
             name: name,
             cel: cel,
             xp: xp,
@@ -85,7 +85,7 @@ export default function Home() : JSX.Element {
                         onClick={()=>{
                             if(e.state){
                             setOpen(true),
-                            setIddelivery(e.iddelivery),
+                            setIddelivery(e.id),
                             setState(e.state),
                             setName(e.name),
                                 setCel(e.cel),
@@ -103,7 +103,7 @@ export default function Home() : JSX.Element {
                                 </div>
                             </section>
                             <section  className='grid grid-cols-1 text-gray-500 gap-5 content-start font-thin'>
-                                <h2>ID - {e.iddelivery}</h2>
+                                <h2>ID - {e.id}</h2>
                                 <h2>Cel - {e.cel}</h2>
                                 <h2>Experience - {e.xp}</h2>
                                 <div className='container'>
