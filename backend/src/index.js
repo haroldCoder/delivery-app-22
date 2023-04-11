@@ -8,7 +8,7 @@ const {
     DB_PASSWORD,
     DB_USER,
     DB_PORT
-} = require('../config.js');
+} = require('./config.js');
 const { PORT } = require("./config.js");
 const app = express();
 app.use(express.json())
