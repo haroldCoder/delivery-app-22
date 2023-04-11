@@ -27,6 +27,14 @@ connect.connect(function(err) {
 })
 
 app.set("port", PORT);
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Methods", "POST,GET,OPTIONS");
+    if (req.method == "OPTIONS") {
+        return res.sendStatus(200);
+    }
+    next();
+});
 app.get("/", async(req, res)=>{
     connect.query("SELECT * FROM delivery",(err, result)=>{
         if(err) throw err;
