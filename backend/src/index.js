@@ -2,23 +2,31 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mysql = require("mysql")
-
+const {
+    DB_HOST,
+    DB_NAME,
+    DB_PASSWORD,
+    DB_USER,
+    DB_PORT
+} = require('../config.js');
+const { PORT } = require("./config.js");
 const app = express();
 app.use(express.json())
 app.use(cors())
 
 let connect = mysql.createConnection({
-    host: "localhost",
-    user: "koderx",
-    password: "2364144",
-    database: "delivery"
+    user: DB_USER,
+    password: DB_PASSWORD,
+    host: DB_HOST,
+    port: DB_PORT,
+    database: DB_NAME
 })
 connect.connect(function(err) {
     if (err) throw err;
     console.log("Connected!");
 })
 
-app.set("port", 8000);
+app.set("port", PORT);
 app.get("/", async(req, res)=>{
     connect.query("SELECT * FROM delivery",(err, result)=>{
         if(err) throw err;
