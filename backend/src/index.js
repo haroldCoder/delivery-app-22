@@ -56,7 +56,7 @@ app.put("/:id", async(req, res) =>{
     const {name, cel, xp, state} = req.body;
     const {id} = req.params;
     connect.query(`UPDATE delivery SET name = "${name}", cel = ${cel}, xp = "${xp}", state = ${state}  WHERE id = ${id}`,(err, result)=>{
-        if(err) throw err;
+        if(err) console.log(err);
         res.json(result)
     })
 })

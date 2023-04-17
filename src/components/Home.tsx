@@ -3,6 +3,7 @@ import ride from '../imgs/delivery.png'
 import axios from 'axios';
 import {FiHelpCircle} from 'react-icons/fi';
 import {API} from '../config';
+import delivery_logo from '../assets/delivery-logo.png'
 interface Data{
     id: Number,
     name: string,
@@ -76,8 +77,12 @@ export default function Home() : JSX.Element {
     
   return (
     <div className='p-4'>
-        <h1 className='font-bold text-2xl text-gray-600 border-b-[1px] border-[#AAA] p-2 w-[50%]'>App Delivery</h1>
-        <div className='p-[5%] container flex flex-row'>
+        <div className="header flex items-center p-3 ">
+            <img src={delivery_logo} className='w-[7%] rounded-full' alt="" />
+            <h1 className='font-bold text-3xl text-gray-600 border-b-[1px] border-[#AAA] ml-4 p-5 w-[50%]'>App Delivery</h1> 
+        </div>
+        
+        <div className='p-[3%] container flex flex-row'>
             <div className='grid grid-cols-2 gap-4 w-[50%]'>
                 {
                     data.map((e)=>(
