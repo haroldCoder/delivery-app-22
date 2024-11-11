@@ -10,16 +10,17 @@ export class ConnectdbService {
       {
         provide: 'DATABASE_CONNECTION',
         useFactory: async () => {
-          await createPool({
+          const pool = await createPool({
             host: process.env.DB_HOST,
             user: process.env.DB_USER,
             password: process.env.DB_PASSWORD,
             database: process.env.DB_NAME,
             port: parseInt(process.env.DB_PORT),
             connectionLimit: 10,
-          }).query("SELECT 1")
-
+          })
+          pool.query("SELECT 1")
           console.log("Connect db")
+          return pool;
         },
       },
     ];
